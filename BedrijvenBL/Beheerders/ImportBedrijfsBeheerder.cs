@@ -11,23 +11,20 @@ namespace BedrijvenBL.Beheerders
     public class ImportBedrijfsBeheerder
     {
         IBedrijvenBestandsLezer lezer;
+        IBedrijvenRepository repo;
         //Dictionary<string, Bedrijf> bedrijven=new();
         //Dictionary<string, List<Personeel>> personeelWoonplaats=new();
 
         public ImportBedrijfsBeheerder(IBedrijvenBestandsLezer lezer, IBedrijvenRepository repo)
         {
-            //this.lezer = lezer;
-            //List<Bedrijf> bedrijvenLijst = lezer.LeesDataBedrijven(pad,padLog);
-            //foreach (Bedrijf b in bedrijvenLijst)
-            //{
-            //    bedrijven.Add(b.Naam, b);
-            //    foreach(Personeel p in b.Personeel())
-            //    {
-            //        if (!personeelWoonplaats.ContainsKey(p.Adres.Woonplaats))
-            //            personeelWoonplaats.Add(p.Adres.Woonplaats, new List<Personeel>());
-            //        personeelWoonplaats[p.Adres.Woonplaats].Add(p);
-            //    }
-            //}
+           this.lezer = lezer;
+           this.repo = repo;
+        }
+
+        public void ImporteerGegegevens(string sourceFile, string logFile)
+        {
+            var data=lezer.LeesDataBedrijven(sourceFile, logFile);
+            repo.ImporteerBedrijven(data);
         }
 
         //public IReadOnlyList<Personeel> GeefPersoneelBedrijf(string bedrijfsnaam)

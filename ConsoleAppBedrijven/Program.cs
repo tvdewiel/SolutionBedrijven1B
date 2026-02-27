@@ -24,7 +24,7 @@ namespace ConsoleAppBedrijven
             ImportBedrijfsBeheerder beheerder = new ImportBedrijfsBeheerder(
                 BestandsLezerFactory.GeefBedrijvenBestandsLezer(sourceFileType),
                 RepositoryFactory.GeefRepository(databaseType,connectionsString));
-            beheerder.ImporteerGegegevens();
+            beheerder.ImporteerGegegevens(sourceFile,logFile);
 
         }
     }

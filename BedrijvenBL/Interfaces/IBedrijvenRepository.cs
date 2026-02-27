@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrijvenBL.Domein;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace BedrijvenBL.Interfaces
 {
     public interface IBedrijvenRepository
     {
+        void ImporteerBedrijven(List<Bedrijf> data);
     }
 }
