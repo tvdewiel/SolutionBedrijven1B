@@ -7,11 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppBedrijven", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrijvenBL", "BedrijvenBL\BedrijvenBL.csproj", "{1A184775-4281-43F1-8B7A-4ABA8D59262C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrijvenDL", "BedrijvenDL\BedrijvenDL.csproj", "{DADA2D24-ED11-4202-A68E-EC08317D6B7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrijvenDL_File", "BedrijvenDL\BedrijvenDL_File.csproj", "{DADA2D24-ED11-4202-A68E-EC08317D6B7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppTestFileReader", "ConsoleAppTestFileReader\ConsoleAppTestFileReader.csproj", "{FD75E176-8D4D-4D12-B6FE-8E504FCBDDF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrijvenDL_SQL", "BedrijvenDL_SQL\BedrijvenDL_SQL.csproj", "{E05D54C2-EA15-4427-9D24-EF3F7D60C069}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrijvenUtil", "BedrijvenUtil\BedrijvenUtil.csproj", "{908535EC-9F92-40AF-B047-86232F2A5324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,14 @@ Global
 		{FD75E176-8D4D-4D12-B6FE-8E504FCBDDF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD75E176-8D4D-4D12-B6FE-8E504FCBDDF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD75E176-8D4D-4D12-B6FE-8E504FCBDDF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E05D54C2-EA15-4427-9D24-EF3F7D60C069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E05D54C2-EA15-4427-9D24-EF3F7D60C069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E05D54C2-EA15-4427-9D24-EF3F7D60C069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E05D54C2-EA15-4427-9D24-EF3F7D60C069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{908535EC-9F92-40AF-B047-86232F2A5324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908535EC-9F92-40AF-B047-86232F2A5324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908535EC-9F92-40AF-B047-86232F2A5324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908535EC-9F92-40AF-B047-86232F2A5324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

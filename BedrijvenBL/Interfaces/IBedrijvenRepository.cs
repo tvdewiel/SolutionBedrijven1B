@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BedrijvenBL
+namespace BedrijvenBL.Interfaces
 {
-    public interface IBedrijvenLezer
+    public interface IBedrijvenRepository
     {
-        List<Bedrijf> LeesDataBedrijven(string pad,string logPad);
     }
 }

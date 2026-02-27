@@ -1,4 +1,6 @@
-﻿namespace BedrijvenBL
+﻿using BedrijvenBL.Exceptions;
+
+namespace BedrijvenBL.Domein
 {
     public class Adres
     {

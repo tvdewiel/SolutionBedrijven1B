@@ -1,8 +1,10 @@
-﻿using BedrijvenBL;
+﻿using BedrijvenBL.Domein;
+using BedrijvenBL.Exceptions;
+using BedrijvenBL.Interfaces;
 
 namespace BedrijvenDL
 {
-    public class BedrijfsBestandsLezer : IBedrijvenLezer
+    public class BedrijfsBestandsLezerTXT : IBedrijvenBestandsLezer
     {
         public List<Bedrijf> LeesDataBedrijven(string pad,string padLog)
         {

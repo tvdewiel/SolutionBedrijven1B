@@ -8,7 +8,7 @@ namespace ConsoleAppTestFileReader
         {
             Console.WriteLine("Hello, World!");
             string pad = @"c:\tmp\bedrijvenbelgie_18092025.txt";
-            BedrijfsBestandsLezer lezer = new BedrijfsBestandsLezer();
+            BedrijfsBestandsLezerTXT lezer = new BedrijfsBestandsLezerTXT();
             //var res=lezer.LeesTXTBestand(pad);
         }
     }

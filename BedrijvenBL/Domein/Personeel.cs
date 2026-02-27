@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BedrijvenBL
+namespace BedrijvenBL.Domein
 {
     public class Personeel
     {
