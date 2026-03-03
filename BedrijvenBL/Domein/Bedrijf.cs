@@ -23,6 +23,13 @@ namespace BedrijvenBL.Domein
                 VoegPersoneelToe(p);
             }
         }
+
+        public Bedrijf(int? id, string naam, string sector, string industrie, string extraInfo, string hoofdkwartier, int jaarOprichting, List<Personeel> personeel) : this(naam,sector,industrie, extraInfo, hoofdkwartier, jaarOprichting, personeel)
+        {
+            Id = id;
+        }
+
+        public int? Id { get; set; }
         public string Naam {  get; set; }
         public string Sector { get; set; }
         public string Industrie { get; set; }

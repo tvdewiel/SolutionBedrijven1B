@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BedrijvenBL.Domein;
+using BedrijvenBL.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +10,16 @@ namespace BedrijvenBL.Beheerders
 {
     public class BedrijfsBeheerder
     {
-        //public IReadOnlyList<Personeel> GeefPersoneelBedrijf(string bedrijfsnaam)
-        //{
-        //    return bedrijven[bedrijfsnaam].Personeel();
-        //}
-        //public IReadOnlyList<Personeel> GeefPersoneelWoonplaats(string woonplaats)
-        //{
-        //    return personeelWoonplaats[woonplaats];
-        //}
+        private IBedrijvenRepository repository;
+
+        public BedrijfsBeheerder(IBedrijvenRepository repository)
+        {
+            this.repository = repository;
+        }
+
+        public Bedrijf GeefBedrijf(string bedrijfsnaam)
+        {
+            return repository.GeefBedrijf(bedrijfsnaam);
+        }
     }
 }

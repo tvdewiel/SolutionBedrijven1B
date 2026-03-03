@@ -15,6 +15,44 @@ namespace BedrijvenDL_SQL
             this.connectionString = connectionString;
         }
 
+        public Bedrijf GeefBedrijf(string bedrijfsnaam)
+        {
+            string sql = "select [naam],[sector],[industrie],[extrainfo],[hoofdkwartier],[jaaroprichting],t2.* from bedrijf t1 left join personeel t2 on t1.id=t2.bedrijfsId where naam=@bedrijfsnaam";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@bedrijfsnaam", bedrijfsnaam);
+                conn.Open();
+                SqlDataReader reader=cmd.ExecuteReader();
+                Bedrijf bedrijf = null;
+                while (reader.Read())
+                {
+                    Personeel personeelslid=new Personeel((int)reader["id"],
+                        (string)reader["voornaam"],
+                        (string)reader["familienaam"],
+                        (string)reader["email"],
+                        (DateTime)reader["geboortedatum"],
+                        new Adres((string)reader["huisnummer"],(string)reader["straat"],(int)reader["postcode"],(string)reader["woonplaats"]));
+                    if (bedrijf == null) //is eerste rij 
+                    {
+                        bedrijf = new Bedrijf((int)reader["bedrijfsid"],
+                            (string)reader["naam"],
+                            (string)reader["sector"],
+                            (string)reader["industrie"],
+                            (string)reader["extrainfo"],
+                            (string)reader["hoofdkwartier"],
+                            (int)reader["jaaroprichting"],new List<Personeel>() { personeelslid});
+                    }
+                    else
+                    {
+                        bedrijf.VoegPersoneelToe(personeelslid);
+                    }
+                }
+                return bedrijf;
+            }
+        }
+
         public void ImporteerBedrijven(List<Bedrijf> data)
         {
             string queryBedrijf = "INSERT INTO bedrijf(naam,sector,industrie,extrainfo,hoofdkwartier,jaaroprichting) output INSERTED.ID VALUES(@naam,@sector,@industrie,@extrainfo,@hoofdkwartier,@jaaroprichting)";

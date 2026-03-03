@@ -1,4 +1,5 @@
 ﻿using BedrijvenBL.Beheerders;
+using BedrijvenBL.Domein;
 using BedrijvenDL;
 using BedrijvenUtil;
 using Microsoft.Extensions.Configuration;
@@ -21,10 +22,14 @@ namespace ConsoleAppBedrijven
             string sourceFileType = config.GetSection("AppSettings")["sourceFileType"];
             string databaseType = config.GetSection("AppSettings")["databaseType"];
 
-            ImportBedrijfsBeheerder beheerder = new ImportBedrijfsBeheerder(
-                BestandsLezerFactory.GeefBedrijvenBestandsLezer(sourceFileType),
-                RepositoryFactory.GeefRepository(databaseType,connectionsString));
-            beheerder.ImporteerGegegevens(sourceFile,logFile);
+            //ImportBedrijfsBeheerder beheerder = new ImportBedrijfsBeheerder(
+            //    BestandsLezerFactory.GeefBedrijvenBestandsLezer(sourceFileType),
+            //    RepositoryFactory.GeefRepository(databaseType,connectionsString));
+            //beheerder.ImporteerGegegevens(sourceFile,logFile);
+
+            BedrijfsBeheerder bedrijfsBeheerder = new BedrijfsBeheerder(RepositoryFactory.GeefRepository(databaseType,connectionsString));
+            Bedrijf b=bedrijfsBeheerder.GeefBedrijf("Bekaert");
+            List<Personeel> personeel = bedrijfsBeheerder.GeefPersoneelWoonplaats("Gent");
 
         }
     }

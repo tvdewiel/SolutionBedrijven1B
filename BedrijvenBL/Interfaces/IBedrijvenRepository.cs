@@ -9,6 +9,7 @@ namespace BedrijvenBL.Interfaces
 {
     public interface IBedrijvenRepository
     {
+        Bedrijf GeefBedrijf(string bedrijfsnaam);
         void ImporteerBedrijven(List<Bedrijf> data);
     }
 }
