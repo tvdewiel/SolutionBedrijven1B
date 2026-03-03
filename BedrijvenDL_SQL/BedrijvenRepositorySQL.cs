@@ -1,4 +1,5 @@
 ﻿using BedrijvenBL.Domein;
+using BedrijvenBL.DTOs;
 using BedrijvenBL.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
@@ -50,6 +51,55 @@ namespace BedrijvenDL_SQL
                     }
                 }
                 return bedrijf;
+            }
+        }
+
+        public List<BedrijfDTO> GeefBedrijfDTOs()
+        {
+            string sql = "select t1.id,naam,sector,industrie,extrainfo,hoofdkwartier,jaaroprichting,count(*) aantalpersoneel from bedrijf t1 left join personeel t2 on t1.id=t2.bedrijfsId group by t1.id,naam,sector,industrie,extrainfo,hoofdkwartier,jaaroprichting";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                List<BedrijfDTO> bedrijven = new();
+                cmd.CommandText = sql;
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    bedrijven.Add(new BedrijfDTO((int)reader["id"],
+                         (string)reader["naam"],
+                         (string)reader["sector"],
+                         (string)reader["industrie"],
+                         (string)reader["extrainfo"], 
+                         (string)reader["hoofdkwartier"], 
+                         (int)reader["jaaroprichting"], 
+                         (int)reader["aantalpersoneel"]));
+                }
+                return bedrijven;
+            }
+        }
+
+        public List<Personeel> GeefPersoneelWoonplaats(string woonplaats)
+        {
+            string sql = "select * from personeel where woonplaats=@woonplaats";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                List<Personeel> personeel = new();
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@woonplaats", woonplaats);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    personeel.Add(new Personeel((int)reader["id"],
+                         (string)reader["voornaam"],
+                         (string)reader["familienaam"],
+                         (string)reader["email"],
+                         (DateTime)reader["geboortedatum"],
+                         new Adres((string)reader["huisnummer"], (string)reader["straat"], (int)reader["postcode"], (string)reader["woonplaats"])));
+                }
+                return personeel;
             }
         }
 

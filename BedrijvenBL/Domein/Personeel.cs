@@ -11,7 +11,7 @@ namespace BedrijvenBL.Domein
         public int Id { get; set; }
         public string Voornaam { get; set; }
         public string Familienaam { get; set; }
-        public string Email;
+        public string Email { get; set; }
 
         public Personeel(int id, string voornaam, string familienaam, string email, DateTime geboortedatum, Adres adres)
         {

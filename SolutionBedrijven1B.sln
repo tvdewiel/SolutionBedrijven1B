@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrijvenDL_SQL", "Bedrijve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrijvenUtil", "BedrijvenUtil\BedrijvenUtil.csproj", "{908535EC-9F92-40AF-B047-86232F2A5324}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrijvenWPFAdmin", "BedrijvenWPFAdmin\BedrijvenWPFAdmin.csproj", "{FD5840A6-072D-4992-B603-8B190D84874C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{908535EC-9F92-40AF-B047-86232F2A5324}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{908535EC-9F92-40AF-B047-86232F2A5324}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{908535EC-9F92-40AF-B047-86232F2A5324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5840A6-072D-4992-B603-8B190D84874C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5840A6-072D-4992-B603-8B190D84874C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5840A6-072D-4992-B603-8B190D84874C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5840A6-072D-4992-B603-8B190D84874C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
