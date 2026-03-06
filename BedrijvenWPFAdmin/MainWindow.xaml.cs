@@ -1,4 +1,5 @@
 ﻿using BedrijvenBL.Beheerders;
+using BedrijvenBL.Domein;
 using BedrijvenBL.DTOs;
 using BedrijvenUtil;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +46,18 @@ namespace BedrijvenWPFAdmin
         private void DataGridBedrijven_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGridPersoneel.ItemsSource = bedrijfsBeheerder.GeefPersoneelBedrijf(((BedrijfDTO)DataGridBedrijven.SelectedItem).Naam);
+        }
+
+        private void VerwijderPersoneel_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataGridPersoneel.SelectedItem != null)
+            {
+                bedrijfsBeheerder.VerwijderPersoneel((Personeel)DataGridPersoneel.SelectedItem);
+            }
+            else
+            {
+                MessageBox.Show("Verwijder","Niemand Geselecteerd",MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

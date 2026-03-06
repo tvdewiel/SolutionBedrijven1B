@@ -18,7 +18,7 @@ namespace BedrijvenDL_SQL
 
         public Bedrijf GeefBedrijf(string bedrijfsnaam)
         {
-            string sql = "select [naam],[sector],[industrie],[extrainfo],[hoofdkwartier],[jaaroprichting],t2.* from bedrijf t1 left join personeel t2 on t1.id=t2.bedrijfsId where naam=@bedrijfsnaam";
+            string sql = "select [naam],[sector],[industrie],[extrainfo],[hoofdkwartier],[jaaroprichting],t2.* from bedrijf t1 left join personeel t2 on t1.id=t2.bedrijfsId where naam=@bedrijfsnaam and t2.verwijderdatum is null";
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = conn.CreateCommand())
             {
@@ -56,7 +56,7 @@ namespace BedrijvenDL_SQL
 
         public List<BedrijfDTO> GeefBedrijfDTOs()
         {
-            string sql = "select t1.id,naam,sector,industrie,extrainfo,hoofdkwartier,jaaroprichting,count(*) aantalpersoneel from bedrijf t1 left join personeel t2 on t1.id=t2.bedrijfsId group by t1.id,naam,sector,industrie,extrainfo,hoofdkwartier,jaaroprichting";
+            string sql = "select t1.id,naam,sector,industrie,extrainfo,hoofdkwartier,jaaroprichting,count(*) aantalpersoneel from bedrijf t1 left join personeel t2 on t1.id=t2.bedrijfsId where t2.verwijderdatum is null group by t1.id,naam,sector,industrie,extrainfo,hoofdkwartier,jaaroprichting";
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = conn.CreateCommand())
             {
@@ -81,7 +81,7 @@ namespace BedrijvenDL_SQL
 
         public List<Personeel> GeefPersoneelWoonplaats(string woonplaats)
         {
-            string sql = "select * from personeel where woonplaats=@woonplaats";
+            string sql = "select * from personeel where woonplaats=@woonplaats and verwijderdatum is null";
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = conn.CreateCommand())
             {
@@ -161,6 +161,20 @@ namespace BedrijvenDL_SQL
                     transaction.Commit();
                 }
                 catch (Exception ex) {transaction.Rollback(); throw ex;}
+            }
+        }
+
+        public void VerwijderPersoneel(Personeel personeel)
+        {
+            string sql = "UPDATE personeel SET verwijderdatum=@datum WHERE id=@id";
+            using(SqlConnection conn=new SqlConnection(connectionString))
+            using(SqlCommand cmd=conn.CreateCommand())
+            {
+                cmd.CommandText = sql;
+                cmd.Parameters.AddWithValue("@id", personeel.Id);
+                cmd.Parameters.AddWithValue("@datum",DateTime.Now);
+                conn.Open();
+                cmd.ExecuteNonQuery();
             }
         }
     }

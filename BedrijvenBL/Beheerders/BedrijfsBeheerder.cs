@@ -38,5 +38,11 @@ namespace BedrijvenBL.Beheerders
         {
             return repository.GeefPersoneelWoonplaats(woonplaats);
         }
+
+        public void VerwijderPersoneel(Personeel personeel)
+        {
+            //if (repository.BestaatPersoneel())
+            repository.VerwijderPersoneel(personeel);
+        }
     }
 }

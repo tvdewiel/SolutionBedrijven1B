@@ -19,7 +19,7 @@
                 <ContextMenu>
                     <MenuItem Header="Nieuw personeelslid"/>
                     <MenuItem Header="Update personeelslid"/>
-                    <MenuItem Header="Verwijder personeelslid"/>
+                    <MenuItem Header="Verwijder personeelslid" Click="VerwijderPersoneel_Click"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>

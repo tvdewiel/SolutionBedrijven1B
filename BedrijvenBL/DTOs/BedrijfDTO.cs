@@ -8,7 +8,7 @@ namespace BedrijvenBL.DTOs
 {
     public class BedrijfDTO
     {
-        public BedrijfDTO(int? id, string naam, string sector, string industrie, string extraInfo, string hoofdkwartier, int jaarOprichting, int aantalPersoneel)
+        public BedrijfDTO(int id, string naam, string sector, string industrie, string extraInfo, string hoofdkwartier, int jaarOprichting, int aantalPersoneel)
         {
             Id = id;
             Naam = naam;
@@ -20,7 +20,7 @@ namespace BedrijvenBL.DTOs
             AantalPersoneel = aantalPersoneel;
         }
 
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Naam { get; set; }
         public string Sector { get; set; }
         public string Industrie { get; set; }

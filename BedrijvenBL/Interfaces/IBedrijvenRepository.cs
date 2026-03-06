@@ -14,5 +14,6 @@ namespace BedrijvenBL.Interfaces
         List<BedrijfDTO> GeefBedrijfDTOs();
         List<Personeel> GeefPersoneelWoonplaats(string woonplaats);
         void ImporteerBedrijven(List<Bedrijf> data);
+        void VerwijderPersoneel(Personeel personeel);
     }
 }
